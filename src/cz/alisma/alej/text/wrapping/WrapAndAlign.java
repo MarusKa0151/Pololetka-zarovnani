@@ -29,12 +29,12 @@ import java.util.Scanner;
 public class WrapAndAlign {
 
 	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
+		String[] commands = args;
+		Scanner input = new Scanner(System.in); //how to deal with input??????????????????
 		Aligner aligner = new LeftAligner();
 		int maxWidth = 60;
-    	while (input.hasNext()) {
-    		String command = input.next();
-    		
+		for (int i = 0; i < args.length; i++) {
+			String command = args[i];
     		if (command == "--right") {
     			aligner = new RightAligner();
     		}
@@ -43,10 +43,13 @@ public class WrapAndAlign {
     		}
     		else if (command == "--justify") {
     			aligner = new JustifyAligner();
+    		}    		
+    		else if (command == "-w") {
+    			i++;
+    			maxWidth = Integer.parseInt(args[i]);
     		}
-    		
-    		if (command == "-w") {
-    			maxWidth = Integer.parseInt(input.next());
+    		else if (command.startsWith("--width==")) {
+    			maxWidth = Integer.parseInt(command.substring(9));
     		}
     	}
 

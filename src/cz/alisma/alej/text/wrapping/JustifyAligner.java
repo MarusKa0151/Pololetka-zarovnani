@@ -9,7 +9,7 @@ public class JustifyAligner implements Aligner {
     public String format(List<String> words, int width) {
     	int numberOfWords = words.size();
     	String wordsString = words.toString();
-    	int lengthOfWords = wordsString.length();
+    	int lengthOfWords = wordsString.length() - (2 * numberOfWords); //bug: it also counted ", " between the woords
     	int numberOfSpaces = (width - lengthOfWords) / (numberOfWords - 1);
     	int plusSpaces = (width - lengthOfWords) % (numberOfWords - 1);    	
     	
@@ -17,13 +17,12 @@ public class JustifyAligner implements Aligner {
         
         boolean first = true;
         for (String w : words) {
-            if (!first) {
-                preResult.append(" ");
+        	if (!first) {
                 if (plusSpaces != 0) {
                 	preResult.append(" ");
                 	plusSpaces -= 1;
                 }
-                for (int i = 0; i < numberOfSpaces; i++) {
+                for (int j = 0; j < numberOfSpaces; j++) {
                 	preResult.append(" ");
                 }
             } else {
