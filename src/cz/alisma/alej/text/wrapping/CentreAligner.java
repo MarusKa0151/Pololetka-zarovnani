@@ -23,7 +23,7 @@ public class CentreAligner implements Aligner {
         String theResult = preResult.toString();
         
         StringBuilder beginSpaces = new StringBuilder();
-        StringBuilder endSpaces = new StringBuilder();
+        //StringBuilder endSpaces = new StringBuilder();
         int numberOfBeginSpaces;
         
         if ((width - theResult.length()) / 2 == 0) {

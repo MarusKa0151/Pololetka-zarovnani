@@ -30,21 +30,21 @@ public class WrapAndAlign {
 
 	public static void main(String[] args) {
 		String[] commands = args;
-		Scanner input = new Scanner(System.in); //how to deal with input??????????????????
+		Scanner input = new Scanner(System.in);
 		Aligner aligner = new LeftAligner();
 		int maxWidth = 60;
 		for (int i = 0; i < args.length; i++) {
 			String command = args[i];
-    		if (command == "--right") {
+    		if (command.equals("--right")) {
     			aligner = new RightAligner();
     		}
-    		else if (command == "--centre" || command == "--center") {
+    		else if (command.equals("--centre") || command.equals("--center")) {
     			aligner = new CentreAligner();
     		}
-    		else if (command == "--justify") {
+    		else if (command.equals("--justify")) {
     			aligner = new JustifyAligner();
     		}    		
-    		else if (command == "-w") {
+    		else if (command.equals("-w")) {
     			i++;
     			maxWidth = Integer.parseInt(args[i]);
     		}
